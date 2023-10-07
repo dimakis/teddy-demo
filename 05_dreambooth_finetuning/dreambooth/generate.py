@@ -48,7 +48,7 @@ def run(args):
             )
 
         prompt_ds = ray.data.from_items(prompts_with_idxs)
-        num_workers = 4
+        num_workers = 2
 
         # Run the batch inference by consuming output with `take_all`.
         prompt_ds.map_batches(
@@ -76,5 +76,9 @@ def run(args):
 
 
 if __name__ == "__main__":
+    ray.shutdown()
+    runtime_env = {"pip":["torch","diffusers"], "working_dir":"."}
+    ray.init(address="ray://stab-diff1-head-svc.default.svc.cluster.local:10001",
+            runtime_env=runtime_env)
     args = run_model_flags().parse_args()
     run(args)
