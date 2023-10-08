@@ -4,7 +4,7 @@ metadata:
   labels:
     appwrapper.mcad.ibm.com: stab-diff-model
     controller-tools.k8s.io: '1.0'
-  name: stab-diff-model
+  name: stab-diff-model2
   namespace: default
 spec:
   autoscalerOptions:
@@ -32,10 +32,10 @@ spec:
             requiredDuringSchedulingIgnoredDuringExecution:
               nodeSelectorTerms:
               - matchExpressions:
-                - key: stab-diff-model
+                - key: stab-diff-model2
                   operator: In
                   values:
-                  - stab-diff-model
+                  - stab-diff-model2
         containers:
         - env:
           - name: MY_POD_IP
@@ -69,17 +69,17 @@ spec:
             name: client
           resources:
             limits:
-              cpu: 2
-              memory: 8G
+              cpu: 4
+              memory: 6G
               nvidia.com/gpu: 0
             requests:
-              cpu: 2
-              memory: 8G
+              cpu: 4
+              memory: 6G
               nvidia.com/gpu: 0
         imagePullSecrets: []
   rayVersion: 2.5.0
   workerGroupSpecs:
-  - groupName: small-group-stab-diff-model
+  - groupName: small-group-stab-diff-model2
     maxReplicas: 2
     minReplicas: 2
     rayStartParams:
@@ -98,10 +98,10 @@ spec:
             requiredDuringSchedulingIgnoredDuringExecution:
               nodeSelectorTerms:
               - matchExpressions:
-                - key: stab-diff-model
+                - key: stab-diff-model2
                   operator: In
                   values:
-                  - stab-diff-model
+                  - stab-diff-model2
         containers:
         - env:
           - name: MY_POD_IP
@@ -127,12 +127,12 @@ spec:
           name: machine-learning
           resources:
             limits:
-              cpu: 16
-              memory: 24G
+              cpu: 4
+              memory: 6G
               nvidia.com/gpu: 1
             requests:
-              cpu: 16
-              memory: 24G
+              cpu: 4
+              memory: 6G
               nvidia.com/gpu: 1
         imagePullSecrets: []
         initContainers:
@@ -149,7 +149,7 @@ kind: Route
 metadata:
   labels:
     odh-ray-cluster-service: stab-diff-model-head-svc
-  name: ray-dashboard-stab-diff-model
+  name: ray-dashboard-stab-diff-model2
   namespace: default
 spec:
   port:

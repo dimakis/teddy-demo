@@ -19,13 +19,13 @@ spec:
           memory: 8G
           nvidia.com/gpu: 0
       - limits:
-          cpu: 16
-          memory: 24G
+          cpu: 6
+          memory: 10G
           nvidia.com/gpu: 1
         replicas: 2
         requests:
-          cpu: 16
-          memory: 24G
+          cpu: 6
+          memory: 10G
           nvidia.com/gpu: 1
       generictemplate:
         apiVersion: ray.io/v1alpha1
@@ -157,12 +157,12 @@ spec:
                   name: machine-learning
                   resources:
                     limits:
-                      cpu: 16
-                      memory: 24G
+                      cpu: 6
+                      memory: 10G
                       nvidia.com/gpu: 1
                     requests:
-                      cpu: 16
-                      memory: 24G
+                      cpu: 6
+                      memory: 10G
                       nvidia.com/gpu: 1
                 imagePullSecrets: []
                 initContainers:
